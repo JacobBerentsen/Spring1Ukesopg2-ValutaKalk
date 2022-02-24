@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<input id="innValuta" type="text" placeholder="Skriv inn en valuta">
+<input id="innAntall" type="text" placeholder="Skriv inn antall">
+<input type="submit" onclick="hentData()">
+<p id="txtUt"></p>
+<script>
+    function hentData () {
+        const valuta = $("#innValuta").val();
+        const antall = $("#innAntall").val();
+        const url = "valuta=" + valuta + "&antall="+ antall;
+        $.get("/", url, function(data) {
+            const ut = antall + valuta + " = " + data + "nok";
+            $("#txtUt").html(ut);
+        });
+    }
+</script>
+</body>
+</html>
